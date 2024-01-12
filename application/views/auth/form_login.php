@@ -1,7 +1,7 @@
 
   <div class="login-box">
     <div class="login-logo">
-      <a href="<?php echo base_url('adminlte2/'); ?>index2.html"><b>Admin</b>LTE</a>
+      <a href="<?php echo base_url(''); ?>index2.html"><b>Toko Simple</b></a>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
@@ -15,6 +15,7 @@
         <div class="form-group has-feedback">
           <input type="password" class="form-control" placeholder="Password" name="password">
           <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+          <p class="login-box-msg">untuk login sebagai admin masukan username: Administrator pass:123</p>
         </div>
         <div class="row">
         
@@ -24,6 +25,7 @@
           </div>
           <!-- /.col -->
           <a href="<?= base_url('register')?>" class="text-center">Register a new membership</a>
+          
         </div>
       </form>
 

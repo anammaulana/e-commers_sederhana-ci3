@@ -1,6 +1,6 @@
 <div class="register-box">
   <div class="register-logo">
-    <a href="<?= base_url() ?>"><b>AdminLTE</b></a>
+    <a href="<?= base_url() ?>"><b>Toko Simple</b></a>
   </div>
 
   <div class="register-box-body">
