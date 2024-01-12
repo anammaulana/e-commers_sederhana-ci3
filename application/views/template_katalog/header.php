@@ -43,7 +43,7 @@
             </li>
           </ul>
           <form class="d-flex" role="search">
-            <a href="<?= base_url('login') ?>" class="btn btn-outline-success mr-2" type="submit">Sign In</a>
+            <a href="<?= base_url('login/logout') ?>" class="btn btn-outline-success mr-2" type="submit">Log Out</a>
           </form>
 
           <button class="btn btn-dark" id="darkModeToggle">Dark Mode</button>

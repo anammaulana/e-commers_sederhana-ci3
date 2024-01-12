@@ -16,7 +16,9 @@ class Login extends CI_Controller {
 			'title' => 'Login Admin'
 
 		];
-        $this->load->view('form_login',$data);
+        $this->load->view('auth/header_auth',$data);
+        $this->load->view('auth/form_login',$data);
+        $this->load->view('auth/footer_auth',$data);
     }
 
     function aksi_login()

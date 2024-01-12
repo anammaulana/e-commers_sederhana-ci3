@@ -7,5 +7,9 @@ class Login_model extends CI_Model {
 	{
         return $this->db->get_where($table, $where);
 	}
-
+	
+	public function register_user($data) {
+        $this->db->insert('tbl_karyawan', $data);
+        return $this->db->insert_id();
+    }
 }
