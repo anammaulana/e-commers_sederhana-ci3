@@ -105,8 +105,7 @@ class Barang extends CI_Controller
         $this->form_validation->set_rules('category', 'Category', 'required');
         $this->form_validation->set_rules('stok', 'Stok', 'required|numeric');
         $this->form_validation->set_rules('harga', 'Harga', 'required|numeric');
-
-
+    
         if ($this->form_validation->run() == FALSE) {
             $data['barang'] = $this->M_barang->getId($id);
             $data['category'] = $this->listCategory();
@@ -119,14 +118,31 @@ class Barang extends CI_Controller
             $data['id_category'] = $this->input->post('category');
             $data['stok_bar'] = $this->input->post('stok');
             $data['harga_bar'] = $this->input->post('harga');
-
+    
+            // Upload gambar baru jika ada
+            $config['upload_path'] = './uploads/image/';
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_size'] = 2048; // 2MB
+    
+            $this->load->library('upload', $config);
+    
+            if ($this->upload->do_upload('gambar')) {
+                // Hapus gambar lama jika ada
+                $old_image = $this->M_barang->getGambarById($id);
+                if (!empty($old_image)) {
+                    unlink('./uploads/image/' . $old_image);
+                }
+    
+                // Ambil nama gambar yang baru diupload
+                $data['gambar'] = $this->upload->data('file_name');
+            }
+    
             $this->M_barang->edit($id, $data);
             $this->session->set_flashdata('pesan', 'Data berhasil diubah.');
             redirect(base_url('barang'));
         }
     }
-
-    public function delete($id)
+        public function delete($id)
     {
         $this->M_barang->delete($id);
         $this->session->set_flashdata('pesan', 'Data berhasil dihapus.');

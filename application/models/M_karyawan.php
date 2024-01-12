@@ -1,5 +1,4 @@
 <?php
-
 class M_karyawan extends CI_Model {
     private $table = 'tbl_karyawan';
     private $primary_key = 'id_karyawan';
@@ -26,8 +25,7 @@ class M_karyawan extends CI_Model {
     }
 
     public function getJumlahKaryawan() {
-        return $this->db->count_all('tbl_karyawan'); // 'karyawan' adalah nama tabel karyawan
+        return $this->db->count_all($this->table);
     }
-
 }
 ?>

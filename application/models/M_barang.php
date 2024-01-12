@@ -24,7 +24,19 @@ class M_barang extends CI_Model {
     public function delete($id) {
         return $this->db->delete($this->table, array($this->primary_key => $id));
     }
+    public function getGambarById($id)
+    {
+        $this->db->select('gambar');
+        $this->db->from('tbl_barang'); // Gantilah 'nama_tabel' dengan nama tabel yang sesuai
+        $this->db->where('id_barang', $id);
+        $query = $this->db->get();
 
+        if ($query->num_rows() > 0) {
+            return $query->row()->gambar;
+        } else {
+            return null;
+        }
+    }
   
 }
 ?>

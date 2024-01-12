@@ -56,11 +56,14 @@ class Karyawan extends CI_Controller {
     }
     
     public function edit($id) {
-        $this->form_validation->set_rules('username', 'Username', 'required');
-        $this->form_validation->set_rules('username', 'Username', 'required|is_unique[tbl_karyawan.username]');
+        $this->load->model('M_role');
+        $data['roles'] = $this->M_role->getRoles();
+    
         $this->form_validation->set_rules('nama', 'Nama', 'required');
         $this->form_validation->set_rules('alamat', 'Alamat', 'required');
-
+        $this->form_validation->set_rules('username', 'Username', 'required|is_unique[tbl_karyawan.username]');
+        $this->form_validation->set_rules('password', 'Password', 'required');
+    
         if ($this->form_validation->run() == FALSE) {
             $data['karyawan'] = $this->M_karyawan->getId($id);
             $data['username'] = $this->session->userdata('nama');
@@ -72,12 +75,14 @@ class Karyawan extends CI_Controller {
             $data['alamat_kar'] = $this->input->post('alamat');
             $data['username'] = $this->input->post('username');
             $data['password'] = md5($this->input->post('password'));
-
+            $data['role_id'] = $this->input->post('role_id');
+    
             $this->M_karyawan->edit($id, $data);
             $this->session->set_flashdata('pesan', 'Data berhasil diubah.');
             redirect(base_url('karyawan'));
         }
     }
+    
 
     public function delete($id) {
         $this->M_karyawan->delete($id);
