@@ -22,17 +22,14 @@
                     <input type="text" class="form-control" name="username" value="<?= set_value('username', $karyawan->username) ?>">
                     <?= form_error('username', '<p class="text-red">', '</p>'); ?>
                 </div>
-                <div class="form-group">
-                    <label for="role_id">Role</label>
-                    <select class="form-control" name="role_id">
-                        <?php foreach ($roles as $role) : ?>
-                            <option value="<?= $role->role_id; ?>" <?= set_select('role_id', $role->role_id, $role->role_id == $karyawan->role_id); ?>>
-                                <?= $role->role_name; ?>
-                            </option>
-                        <?php endforeach; ?>
-                    </select>
+                <select class="form-control" name="role_id">
+                    <option value="1" <?= set_select('role_id', '1', $karyawan->role_id == 1); ?>>Admin</option>
+                    <option value="2" <?= set_select('role_id', '2', $karyawan->role_id == 2); ?>>User </option>
+                    <!-- Add more options as needed -->
                     <?= form_error('role_id', '<p class="text-red">', '</p>'); ?>
-                </div>
+                </select>
+
+
                 <div class="form-group">
                     <label for="password">Password</label>
                     <input type="password" class="form-control" name="password" value="<?= set_value('password') ?>">
