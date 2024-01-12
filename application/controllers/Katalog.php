@@ -32,7 +32,8 @@ class Katalog extends CI_Controller
 	{
 		$data =
 			[
-				'title' => 'Home'
+				'title' => 'Home',
+				'barang_list' => $this->M_barang->getAll()
 
 			];
 		$this->load->view('template_katalog/header', $data);

@@ -1,7 +1,7 @@
 <!-- File: views/katalog_produk.php -->
 <div class="container">
     <h1 class="mt-4">Semua Produk</h1>
-    <div class="col-12 d-flex justify-content-center">
+    <div class="col-14 d-flex justify-content-center">
         <div class="row">
             <?php foreach ($barang_list as $barang) { ?>
                 <div class="card mt-4 me-3" style="width: 18rem;">
